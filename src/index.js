@@ -1,0 +1,1 @@
+export { diagnose } from "./core/diagnose.js";
