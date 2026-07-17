@@ -16,10 +16,9 @@ export function diagnose(error) {
         return formatReport({
             id: "UNKNOWN_ERROR",
             title: "Unknown Error",
-            meaning: "No diagnosis available.",
+            explanation: "No diagnosis available.",
             causes: [
-                "No matching knowledge pack."
-            ],
+            "No matching diagnosis rule found." ],
             fixes: [
                 "Check the original error."
             ],

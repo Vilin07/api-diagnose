@@ -1,39 +1,35 @@
-const http404 = {
+import { createRule } from "../../core/createRule.js";
 
-    id: "HTTP_404",
+export default createRule({
 
-    matches(error) {
-        return (
-            error.type === "http" &&
-            error.status === 404
-        );
-    },
+  id: "HTTP_404",
 
-    title: "404 Not Found",
+  matches(error) {
+    return error.type === "http" &&
+           error.status === 404;
+  },
 
-    meaning: "The requested endpoint does not exist on the server.",
+  title: "404 Not Found",
 
-    causes: [
-        "Incorrect endpoint URL",
-        "Wrong HTTP method",
-        "Missing API version",
-        "Express route not registered"
-    ],
+  description:
+    "The requested endpoint does not exist.",
 
-    checks: [
-        "Verify the request URL",
-        "Check your backend routes",
-        "Test the endpoint using Postman or curl"
-    ],
+  causes: [
+    "The endpoint URL is incorrect.",
+    "The route is not registered.",
+    "The HTTP method does not match."
+  ],
 
-    fixes: [
-        "Correct the endpoint URL",
-        "Register the route in your backend",
-        "Use the correct HTTP method"
-    ],
+  verify: [
+    "Verify the request URL.",
+    "Verify the backend route.",
+    "Verify the HTTP method."
+  ],
 
-    confidence: 95
+  solution: [
+    "Correct the endpoint URL.",
+    "Register the missing route.",
+    "Use the correct HTTP method."
+  ]
 
-};
-
-export default http404;
+});
