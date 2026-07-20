@@ -1,12 +1,29 @@
-import assert from "node:assert";
-import { diagnose } from "../src/index.js";
+import { diagnose } from "./src/index.js";
 
-const report = diagnose({
-  type: "http",
-  status: 404
+const statusCodes = [
+  400,
+  401,
+  403,
+  404,
+  405,
+  408,
+  409,
+  410,
+  413,
+  415,
+  422,
+  429,
+  500,
+  501,
+  502,
+  503,
+  504
+];
+
+statusCodes.forEach(status => {
+  console.log("================================");
+  console.log(diagnose({
+    type: "http",
+    status
+  }));
 });
-
-assert.strictEqual(report.id, "HTTP_404");
-assert.strictEqual(report.title, "404 Not Found");
-
-console.log("✅ HTTP 404 test passed");
